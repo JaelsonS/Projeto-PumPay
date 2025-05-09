@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PumPay - Desafios Fitness com Recompensas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6C63FF;
+            --secondary-color: #4D44DB;
+            --accent-color: #FF6584;
+            --dark-color: #2D3748;
+            --light-color: #F7FAFC;
+            --success-color: #48BB78;
+            --warning-color: #ED8936;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        .navbar-brand {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+        }
+        
+        .navbar-brand span {
+            color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 10px 25px;
+            font-weight: 500;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            background-color: #e04f6d;
+            border-color: #e04f6d;
+            color: white;
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, #6C63FF 0%, #4D44DB 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.15;
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+          .object-fit-cover {
+        object-fit: cover;
+    }
+    
+    .challenge-card {
+        transition: transform 0.3s ease;
+    }
+    
+    .challenge-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .challenge-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background-color: #FF6584;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+    
+    .bet-amount {
+        font-weight: 700;
+        color: #FF6584;
+    }
+    
+    .progress-bar-custom {
+        background-color: #6C63FF;
+    }
+        
+        .feature-card {
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .challenge-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            height: 100%;
+        }
+        
+        .challenge-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .challenge-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            height: 100%;
+        }
+        
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+        }
+        
+        .social-feed {
+            background-color: #F8F9FA;
+            border-radius: 15px;
+            padding: 20px;
+            height: 100%;
+        }
+        
+        .social-post {
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+        }
+        
+        .post-user {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .post-time {
+            font-size: 0.8rem;
+            color: #718096;
+        }
+        
+        .stats-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            text-align: center;
+            height: 100%;
+        }
+        
+        .stats-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .stats-label {
+            font-size: 1rem;
+            color: #718096;
+        }
+        
+        .app-screenshot {
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+        }
+        
+        .app-screenshot:hover {
+            transform: scale(1.05);
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center;
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-links a {
+            color: #CBD5E0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .progress-bar-custom {
+            background-color: var(--primary-color);
+            height: 10px;
+            border-radius: 5px;
+        }
+        
+        .workout-card {
+            border-left: 4px solid var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .workout-card:hover {
+            transform: translateX(10px);
+        }
+        
+        .bet-card {
+            border: 2px solid var(--accent-color);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .bet-card:hover {
+            box-shadow: 0 10px 20px rgba(255, 101, 132, 0.2);
+        }
+        
+        .bet-amount {
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            padding: 8px 15px !important;
+            margin: 0 5px;
+        }
+        
+        .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+        
+        .navbar {
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            background-color: white !important;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            padding: 10px 0;
+        }
+        
+        .download-badge {
+            height: 50px;
+            margin: 10px;
+        }
+        
+        .leaderboard-item {
+            transition: all 0.3s ease;
+        }
+        
+        .leaderboard-item:hover {
+            background-color: #F8F9FA;
+            transform: translateX(5px);
+        }
+        
+        .badge-premium {
+            background-color: gold;
+            color: black;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0;
+                text-align: center;
+            }
+            
+            .hero-buttons .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .section-title h2::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target=".navbar" data-bs-offset="100">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Pum<span>Pay</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Recursos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#challenges">Desafios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#community">Comunidade</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#workouts">Treinos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Depoimentos</a>
+                    </li>
+                    <li class="nav-item ms-lg-3 my-2 my-lg-0">
+                        <a class="btn btn-primary" href="#download">Baixar App</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1 class="display-4 fw-bold mb-4">Transforme seu corpo e ganhe dinheiro!</h1>
+                    <p class="lead mb-4">O PumPay combina desafios fitness, apostas saudáveis e uma comunidade vibrante para te motivar a sair do sedentarismo e alcançar seus objetivos.</p>
+                    <div class="hero-buttons d-flex flex-wrap">
+                        <a href="#download" class="btn btn-light btn-lg me-3 mb-3">Baixar App</a>
+                        <a href="#how-it-works" class="btn btn-outline-light btn-lg mb-3">Como Funciona</a>
+                    </div>
+                    <div class="d-flex align-items-center mt-4">
+                        <div class="me-4">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-star text-warning me-2"></i>
+                                <span class="fw-bold">4.9</span>
+                                <span class="text-light ms-1">(25k avaliações)</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-users text-light me-2"></i>
+                                <span class="fw-bold">500k+</span>
+                                <span class="text-light ms-1">usuários ativos</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App PumPay" class="img-fluid rounded-4 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <div class="stats-card">
+                        <div class="stats-number">500K+</div>
+                        <div class="stats-label">Usuários Ativos</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-card">
+                        <div class="stats-number">1.2M</div>
+                        <div class="stats-label">Desafios Criados</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-card">
+                        <div class="stats-number">R$5M+</div>
+                        <div class="stats-label">Em Prêmios</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stats-card">
+                        <div class="stats-number">87%</div>
+                        <div class="stats-label">Taxa de Sucesso</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" id="features">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block">Como o PumPay Funciona</h2>
+                <p class="lead">Transforme sua rotina de exercícios com motivação social e incentivos financeiros</p>
+            </div>
+            
+            <div class="row g-4 mb-5" id="how-it-works">
+                <div class="col-lg-4">
+                    <div class="feature-card card h-100 border-0 shadow-sm p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Crie ou Participe de Desafios</h3>
+                        <p>Organize desafios privados com amigos ou participe de desafios públicos. Escolha a duração, tipo de exercício e valor da aposta.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature-card card h-100 border-0 shadow-sm p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3>Registre Seus Treinos</h3>
+                        <p>Poste fotos/vídeos como prova dos seus treinos. Nosso sistema de verificação com IA garante a autenticidade e justiça nos desafios.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="feature-card card h-100 border-0 shadow-sm p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h3>Ganhe Recompensas</h3>
+                        <p>Complete seu desafio para receber seu dinheiro de volta mais uma parte do prêmio daqueles que não concluíram. Quanto mais você treina, mais ganha!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row align-items-center mt-5">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Interface" class="img-fluid rounded-4 shadow app-screenshot">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Mais do que apenas apostas - uma comunidade fitness</h2>
+                    <p>O PumPay não é apenas sobre ganhar dinheiro, mas sobre construir hábitos saudáveis com uma comunidade que te apoia.</p>
+                    
+                    <div class="d-flex align-items-start my-4">
+                        <div class="me-3">
+                            <i class="fas fa-check-circle text-success fa-lg"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Plano de Treinos Personalizado</h5>
+                            <p class="mb-0">Receba treinos adaptados ao seu nível e objetivos, com vídeos demonstrativos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-start my-4">
+                        <div class="me-3">
+                            <i class="fas fa-check-circle text-success fa-lg"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Feed Social Interativo</h5>
+                            <p class="mb-0">Compartilhe progressos, receba incentivos e comente nos posts de outros usuários.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex align-items-start my-4">
+                        <div class="me-3">
+                            <i class="fas fa-check-circle text-success fa-lg"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Sistema de Níveis e Conquistas</h5>
+                            <p class="mb-0">Desbloqueie badges e suba de nível conforme completa desafios e treinos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light" id="challenges">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="section-title d-inline-block">Desafios Populares</h2>
+            <p class="lead">Escolha um desafio que combine com seus objetivos e comece hoje mesmo</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 d-flex">
+                <div class="card challenge-card w-100 border-0">
+                    <div class="position-relative" style="height: 200px; overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
+                             class="card-img-top h-100 w-100 object-fit-cover" 
+                             alt="30 Day Abs Challenge">
+                        <div class="challenge-badge">Mais Popular</div>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Desafio Abdômen em 30 Dias</h5>
+                        <p class="card-text flex-grow-1">Fortaleça seu core com exercícios diários progressivos. Ideal para iniciantes e intermediários.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-primary">Fitness</span>
+                            <span class="bet-amount">R$ 50-200</span>
+                        </div>
+                        <div class="progress mb-3" style="height: 10px;">
+                            <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="d-flex justify-content-between text-muted small mb-3">
+                            <span>75% completaram</span>
+                            <span>1.2k participantes</span>
+                        </div>
+                        <a href="#" class="btn btn-primary w-100">Participar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 d-flex">
+                <div class="card challenge-card w-100 border-0">
+                    <div class="position-relative" style="height: 200px; overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
+                             class="card-img-top h-100 w-100 object-fit-cover" 
+                             alt="Weight Loss Challenge">
+                        <div class="challenge-badge">Novo</div>
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Desafio Perda de Peso em 8 Semanas</h5>
+                        <p class="card-text flex-grow-1">Programa completo com treinos e dicas nutricionais para emagrecer de forma saudável.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-success">Emagrecimento</span>
+                            <span class="bet-amount">R$ 100-500</span>
+                        </div>
+                        <div class="progress mb-3" style="height: 10px;">
+                            <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 62%;" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="d-flex justify-content-between text-muted small mb-3">
+                            <span>62% completaram</span>
+                            <span>850 participantes</span>
+                        </div>
+                        <a href="#" class="btn btn-primary w-100">Participar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6 d-flex">
+                <div class="card challenge-card w-100 border-0">
+                    <div class="position-relative" style="height: 200px; overflow: hidden;">
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
+                             class="card-img-top h-100 w-100 object-fit-cover" 
+                             alt="Running Challenge">
+                    </div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Desafio Corrida 5K em 6 Semanas</h5>
+                        <p class="card-text flex-grow-1">Programa de treinamento progressivo para correr 5km sem parar, mesmo começando do zero.</p>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-info">Cardio</span>
+                            <span class="bet-amount">R$ 30-150</span>
+                        </div>
+                        <div class="progress mb-3" style="height: 10px;">
+                            <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 81%;" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <div class="d-flex justify-content-between text-muted small mb-3">
+                            <span>81% completaram</span>
+                            <span>2.3k participantes</span>
+                        </div>
+                        <a href="#" class="btn btn-primary w-100">Participar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="#" class="btn btn-outline-primary btn-lg">Ver Todos os Desafios</a>
+        </div>
+    </div>
+</section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h2 class="mb-4">Sistema de Apostas Justo e Motivador</h2>
+                    <p>Nosso sistema de apostas foi projetado para manter você motivado sem promover comportamentos prejudiciais.</p>
+                    
+                    <div class="card bet-card mb-3 p-3">
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <i class="fas fa-shield-alt fa-2x text-primary"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Proteção ao Usuário</h5>
+                                <p class="mb-0">Limites de apostas ajustáveis e alertas para apostas responsáveis.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card bet-card mb-3 p-3">
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <i class="fas fa-percentage fa-2x text-primary"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Taxa de Sucesso</h5>
+                                <p class="mb-0">Veja a porcentagem de usuários que completaram cada desafio antes de apostar.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card bet-card p-3">
+                        <div class="d-flex align-items-center">
+                            <div class="me-3">
+                                <i class="fas fa-hand-holding-usd fa-2x text-primary"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-1">Recompensas Garantidas</h5>
+                                <p class="mb-0">Seu dinheiro é guardado em uma carteira segura e liberado conforme o progresso.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Betting System" class="img-fluid rounded-4 shadow app-screenshot">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light" id="community">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block">Comunidade PumPay</h2>
+                <p class="lead">Conecte-se com milhares de pessoas que estão transformando suas vidas</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="social-feed">
+                        <h4 class="mb-4">Feed da Comunidade</h4>
+                        
+                        <div class="social-post">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle me-3" width="40" alt="User">
+                                <div>
+                                    <div class="post-user">Ana Silva</div>
+                                    <div class="post-time">2 horas atrás</div>
+                                </div>
+                            </div>
+                            <p>Finalmente completei meu primeiro desafio de 30 dias! Perdi 5kg e ganhei R$150 dos meus amigos que desistiram. Valeu cada gota de suor! 💪</p>
+                            <div class="d-flex align-items-center mt-3">
+                                <button class="btn btn-sm btn-outline-secondary me-2">
+                                    <i class="far fa-heart me-1"></i> 42
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="far fa-comment me-1"></i> 8
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="social-post">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3" width="40" alt="User">
+                                <div>
+                                    <div class="post-user">Carlos Oliveira</div>
+                                    <div class="post-time">Ontem</div>
+                                </div>
+                            </div>
+                            <p>Alguém quer criar um desafio de flexões para o próximo mês? Estou pensando em R$50 de aposta e 30 dias de duração. Quem topa? 💰</p>
+                            <img src="https://images.unsplash.com/photo-1605296867424-35fc25c9212a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" class="img-fluid rounded mt-2" alt="Pushup">
+                            <div class="d-flex align-items-center mt-3">
+                                <button class="btn btn-sm btn-outline-secondary me-2">
+                                    <i class="far fa-heart me-1"></i> 28
+                                </button>
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="far fa-comment me-1"></i> 5
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="text-center mt-3">
+                            <a href="#" class="btn btn-outline-primary">Ver Mais Publicações</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <h4 class="mb-4">Ranking Semanal</h4>
+                            
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item d-flex align-items-center leaderboard-item">
+                                    <div class="me-3 fw-bold text-primary">1</div>
+                                    <img src="https://randomuser.me/api/portraits/women/68.jpg" class="rounded-circle me-3" width="40" alt="User">
+                                    <div class="flex-grow-1">
+                                        <div class="fw-bold">Juliana Santos</div>
+                                        <small class="text-muted">5 desafios completos</small>
+                                    </div>
+                                    <span class="badge bg-success">+R$ 320</span>
+                                </div>
+                                
+                                <div class="list-group-item d-flex align-items-center leaderboard-item">
+                                    <div class="me-3 fw-bold text-primary">2</div>
+                                    <img src="https://randomuser.me/api/portraits/men/75.jpg" class="rounded-circle me-3" width="40" alt="User">
+                                    <div class="flex-grow-1">
+                                        <div class="fw-bold">Marcos Lima</div>
+                                        <small class="text-muted">4 desafios completos</small>
+                                    </div>
+                                    <span class="badge bg-success">+R$ 275</span>
+                                </div>
+                                
+                                <div class="list-group-item d-flex align-items-center leaderboard-item">
+                                    <div class="me-3 fw-bold text-primary">3</div>
+                                    <img src="https://randomuser.me/api/portraits/women/33.jpg" class="rounded-circle me-3" width="40" alt="User">
+                                    <div class="flex-grow-1">
+                                        <div class="fw-bold">Patrícia Alves</div>
+                                        <small class="text-muted">3 desafios completos</small>
+                                    </div>
+                                    <span class="badge bg-success">+R$ 210</span>
+                                </div>
+                                
+                                <div class="list-group-item d-flex align-items-center leaderboard-item">
+                                    <div class="me-3 fw-bold">4</div>
+                                    <img src="https://randomuser.me/api/portraits/men/22.jpg" class="rounded-circle me-3" width="40" alt="User">
+                                    <div class="flex-grow-1">
+                                        <div>Ricardo Moura</div>
+                                        <small class="text-muted">3 desafios completos</small>
+                                    </div>
+                                    <span class="badge bg-success">+R$ 180</span>
+                                </div>
+                                
+                                <div class="list-group-item d-flex align-items-center leaderboard-item">
+                                    <div class="me-3 fw-bold">5</div>
+                                    <img src="https://randomuser.me/api/portraits/women/12.jpg" class="rounded-circle me-3" width="40" alt="User">
+                                    <div class="flex-grow-1">
+                                        <div>Fernanda Costa</div>
+                                        <small class="text-muted">2 desafios completos</small>
+                                    </div>
+                                    <span class="badge bg-success">+R$ 150</span>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-3">
+                                <a href="#" class="btn btn-outline-primary btn-sm">Ver Ranking Completo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" id="workouts">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block">Planos de Treino</h2>
+                <p class="lead">Treinos profissionais para todos os níveis e objetivos</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card work-card h-100 border-0 shadow-sm p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-fire-alt"></i>
+                        </div>
+                        <h3>Emagrecimento</h3>
+                        <p>Programas de treino HIIT e cardio combinados com orientação nutricional para máxima queima de gordura.</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Treinos de 20-30 minutos</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Sem equipamento necessário</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Planos de 4, 8 e 12 semanas</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-primary mt-auto align-self-start">Ver Treinos</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card work-card h-100 border-0 shadow-sm p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <h3>Hipertrofia</h3>
+                        <p>Programas de musculação para ganho de massa muscular, com variações para academia ou treino em casa.</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Divisões de treino clássicas</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Progressão de carga</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Acompanhamento de medidas</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-primary mt-auto align-self-start">Ver Treinos</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="card work-card h-100 border-0 shadow-sm p-4">
+                        <div class="feature-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <h3>Condicionamento</h3>
+                        <p>Melhore sua resistência cardiovascular e força com treinos funcionais e de endurance.</p>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Preparação para corridas</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Treinos de circuito</li>
+                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Melhora da capacidade aeróbica</li>
+                        </ul>
+                        <a href="#" class="btn btn-outline-primary mt-auto align-self-start">Ver Treinos</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <h3 class="mb-4">Treino do Dia</h3>
+                            <h5 class="text-primary">HIIT Queima Gordura (20 min)</h5>
+                            <p class="text-muted">Nível: Intermediário | Equipamento: Nenhum</p>
+                            
+                            <div class="workout-card bg-light p-3 mb-3 rounded">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-0">Aquecimento</h6>
+                                    <span class="text-muted">5 min</span>
+                                </div>
+                                <p class="mb-0 small">Polichinelos, corrida estacionária e alongamentos dinâmicos</p>
+                            </div>
+                            
+                            <div class="workout-card bg-light p-3 mb-3 rounded">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-0">Circuito 1 (3 rounds)</h6>
+                                    <span class="text-muted">30s cada exercício</span>
+                                </div>
+                                <p class="mb-0 small">Burpees, mountain climbers, squats jumps e descanso 15s</p>
+                            </div>
+                            
+                            <div class="workout-card bg-light p-3 mb-3 rounded">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-0">Circuito 2 (3 rounds)</h6>
+                                    <span class="text-muted">40s cada exercício</span>
+                                </div>
+                                <p class="mb-0 small">Prancha, lunges alternados, flexões e descanso 20s</p>
+                            </div>
+                            
+                            <div class="workout-card bg-light p-3 rounded">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-0">Desaquecimento</h6>
+                                    <span class="text-muted">5 min</span>
+                                </div>
+                                <p class="mb-0 small">Alongamentos estáticos e respiração profunda</p>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <button class="btn btn-primary me-2">
+                                    <i class="fas fa-play me-2"></i>Iniciar Treino
+                                </button>
+                                <button class="btn btn-outline-secondary">
+                                    <i class="fas fa-share-alt me-2"></i>Compartilhar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card border-0 shadow-sm h-100">
+                        <div class="card-body p-4">
+                            <h3 class="mb-4">Seu Progresso</h3>
+                            <p>Registre seus treinos e acompanhe sua evolução ao longo do tempo.</p>
+                            
+                            <div class="mb-4">
+                                <h6>Desafio Abdômen 30 Dias <span class="badge bg-primary float-end">Dia 12/30</span></h6>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6>Desafio Corrida 5K <span class="badge bg-success float-end">75%</span></h6>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6>Nível de Atividade <span class="badge bg-warning text-dark float-end">Bronze</span></h6>
+                                <div class="progress" style="height: 10px;">
+                                    <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted">65% para o próximo nível (Prata)</small>
+                            </div>
+                            
+                            <div class="row text-center mt-4">
+                                <div class="col-4">
+                                    <div class="display-6 fw-bold">12</div>
+                                    <small class="text-muted">Treinos</small>
+                                </div>
+                                <div class="col-4">
+                                    <div class="display-6 fw-bold">8</div>
+                                    <small class="text-muted">Dias seguidos</small>
+                                </div>
+                                <div class="col-4">
+                                    <div class="display-6 fw-bold">2</div>
+                                    <small class="text-muted">Desafios</small>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <button class="btn btn-primary w-100">
+                                    <i class="fas fa-chart-line me-2"></i>Ver Estatísticas Completas
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light" id="testimonials">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block">Histórias de Sucesso</h2>
+                <p class="lead">Veja o que nossos usuários estão falando sobre o PumPay</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" class="testimonial-img me-3" alt="User">
+                            <div>
+                                <h5 class="mb-1">Mariana Costa</h5>
+                                <div class="d-flex">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mb-4">"Depois de anos tentando emagrecer sozinha, o PumPay mudou tudo. Os desafios com meus amigos me motivaram como nunca. Em 3 meses perdi 12kg e ainda ganhei R$600!"</p>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-primary me-2">Emagrecimento</span>
+                            <span class="badge bg-success">+R$ 600</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/men/65.jpg" class="testimonial-img me-3" alt="User">
+                            <div>
+                                <h5 class="mb-1">Ricardo Almeida</h5>
+                                <div class="d-flex">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mb-4">"Nunca fui de treinar, mas a combinação de apostas com meus colegas de trabalho e a comunidade me pegou. Hoje não falto um treino e já corri minha primeira meia maratona!"</p>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-info me-2">Cardio</span>
+                            <span class="badge bg-success">+R$ 420</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" class="testimonial-img me-3" alt="User">
+                            <div>
+                                <h5 class="mb-1">Camila Fernandes</h5>
+                                <div class="d-flex">
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star text-warning"></i>
+                                    <i class="fas fa-star-half-alt text-warning"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mb-4">"Amo os treinos guiados e a possibilidade de competir saudavelmente. Já completei 7 desafios e transformei meu corpo completamente. O melhor? Ganhei dinheiro enquanto me exercitava!"</p>
+                        <div class="d-flex align-items-center">
+                            <span class="badge bg-secondary me-2">Hipertrofia</span>
+                            <span class="badge bg-success">+R$ 1,150</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-outline-primary btn-lg">Ver Mais Depoimentos</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block">Conheça o App</h2>
+                <p class="lead">Interface intuitiva e recursos poderosos na palma da sua mão</p>
+            </div>
+            
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-4 d-none d-lg-block">
+                    <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Screen 1" class="img-fluid rounded-4 shadow app-screenshot mb-4">
+                    <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Screen 3" class="img-fluid rounded-4 shadow app-screenshot">
+                </div>
+                <div class="col-lg-4">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Screen 2" class="img-fluid rounded-4 shadow-lg app-screenshot">
+                </div>
+                <div class="col-lg-4 d-none d-lg-block">
+                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Screen 4" class="img-fluid rounded-4 shadow app-screenshot mb-4">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Screen 5" class="img-fluid rounded-4 shadow app-screenshot">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section" id="download">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center cta-content">
+                    <h2 class="display-5 fw-bold mb-4">Pronto para Transformar seu Corpo e Ganhar Dinheiro?</h2>
+                    <p class="lead mb-5">Junte-se a mais de 500.000 pessoas que estão saindo do sedentarismo com diversão e recompensas financeiras.</p>
+                    
+                    <div class="d-flex flex-wrap justify-content-center">
+                        <a href="#" class="m-2">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/1200px-Download_on_the_App_Store_Badge.svg.png" alt="App Store" class="download-badge">
+                        </a>
+                        <a href="#" class="m-2">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/1200px-Google_Play_Store_badge_EN.svg.png" alt="Google Play" class="download-badge">
+                        </a>
+                    </div>
+                    
+                    <div class="mt-5">
+                        <h5 class="mb-3">Ou cadastre-se para receber o link por email:</h5>
+                        <form class="row g-2 justify-content-center">
+                            <div class="col-md-6 col-12">
+                                <input type="email" class="form-control form-control-lg" placeholder="Seu melhor email">
+                            </div>
+                            <div class="col-md-3 col-12">
+                                <button type="submit" class="btn btn-light btn-lg w-100">Enviar Link</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block">Perguntas Frequentes</h2>
+                <p class="lead">Tire suas dúvidas sobre o PumPay</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Como funcionam as apostas no PumPay?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>No PumPay, você cria ou participa de desafios fitness com uma aposta em dinheiro. Todos os participantes depositam o valor combinado. Quem completar o desafio conforme as regras recebe seu dinheiro de volta mais uma parte do prêmio daqueles que não completaram.</p>
+                                    <p>Por exemplo: 10 amigos apostam R$50 cada em um desafio de 30 dias. 7 completam e 3 não. Os R$150 dos que não completaram são divididos entre os 7 vencedores, que recebem além dos R$50 iniciais, cerca de R$21,42 extras cada.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Como o app verifica se eu realmente treinei?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Utilizamos um sistema de verificação em etapas:</p>
+                                    <ol>
+                                        <li>Check-in diário com foto/vídeo do treino</li>
+                                        <li>Análise por nossa IA que verifica autenticidade</li>
+                                        <li>Validação pelos outros participantes do desafio</li>
+                                        <li>Em alguns casos, integração com wearables (Apple Watch, Fitbit, etc)</li>
+                                    </ol>
+                                    <p>Tudo para garantir justiça e transparência nos desafios.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    O PumPay é seguro para apostas?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Sim, o PumPay foi desenvolvido com várias medidas de segurança:</p>
+                                    <ul>
+                                        <li>Todas as transações são processadas por gateways de pagamento seguros</li>
+                                        <li>Seu dinheiro fica guardado em uma carteira segura até o fim do desafio</li>
+                                        <li>Limites de apostas configuráveis para evitar excessos</li>
+                                        <li>Sistema de alerta para comportamento de risco</li>
+                                        <li>Opção de autoexclusão para quem precisar</li>
+                                    </ul>
+                                    <p>Nosso foco é usar o dinheiro como motivação, não como fim principal.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3 border-0 shadow-sm">
+                            <h2 class="accordion-header" id="headingFour">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    Posso usar o PumPay sem participar de apostas?
+                                </button>
+                            </h2>
+                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    <p>Com certeza! O PumPay oferece várias funcionalidades gratuitas:</p>
+                                    <ul>
+                                        <li>Plano de treinos personalizado</li>
+                                        <li>Comunidade para compartilhar progresso</li>
+                                        <li>Desafios sem apostas monetárias</li>
+                                        <li>Sistema de níveis e conquistas</li>
+                                        <li>Acompanhamento de métricas de saúde</li>
+                                    </ul>
+                                    <p>As apostas são opcionais e servem como um incentivo adicional para quem quiser.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <h3 class="text-white mb-4">Pum<span>Pay</span></h3>
+                    <p>Tornando o fitness divertido e recompensador através de desafios sociais e competições amigáveis.</p>
+                    <div class="mt-4">
+                        <a href="#" class="social-icon me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon me-2"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="text-white mb-4">Links Rápidos</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#home">Home</a></li>
+                        <li class="mb-2"><a href="#features">Recursos</a></li>
+                        <li class="mb-2"><a href="#challenges">Desafios</a></li>
+                        <li class="mb-2"><a href="#community">Comunidade</a></li>
+                        <li class="mb-2"><a href="#workouts">Treinos</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="text-white mb-4">Empresa</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#">Sobre Nós</a></li>
+                        <li class="mb-2"><a href="#">Carreiras</a></li>
+                        <li class="mb-2"><a href="#">Blog</a></li>
+                        <li class="mb-2"><a href="#">Imprensa</a></li>
+                        <li class="mb-2"><a href="#">Parcerias</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="text-white mb-4">Suporte</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li class="mb-2"><a href="#">FAQ</a></li>
+                        <li class="mb-2"><a href="#">Central de Ajuda</a></li>
+                        <li class="mb-2"><a href="#">Termos de Uso</a></li>
+                        <li class="mb-2"><a href="#">Política de Privacidade</a></li>
+                        <li class="mb-2"><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5 class="text-white mb-4">Baixe o App</h5>
+                    <a href="#" class="d-block mb-3">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/1200px-Download_on_the_App_Store_Badge.svg.png" alt="App Store" class="img-fluid">
+                    </a>
+                    <a href="#" class="d-block">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/1200px-Google_Play_Store_badge_EN.svg.png" alt="Google Play" class="img-fluid">
+                    </a>
+                </div>
+            </div>
+            <hr class="my-4 bg-secondary">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2025 PumPay. Todos os direitos reservados.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">Desenvolvido com <i class="fas fa-heart text-danger"></i> para transformar vidas</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+       
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+      
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    } else {
+                        window.location.hash = targetId;
+                    }
+                }
+            });
+        });
+        
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-link');
+        
+        window.addEventListener('scroll', function() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+        
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Funcionalidade de login será implementada na versão final do app. Obrigado pelo interesse!');
+            });
+        }
+    </script>
+</body>
+</html>
