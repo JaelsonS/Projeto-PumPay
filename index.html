@@ -104,38 +104,39 @@
             margin-bottom: 1rem;
             color: var(--primary-color);
         }
-          .object-fit-cover {
-        object-fit: cover;
-    }
-    
-    .challenge-card {
-        transition: transform 0.3s ease;
-    }
-    
-    .challenge-card:hover {
-        transform: translateY(-5px);
-    }
-    
-    .challenge-badge {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-        background-color: #FF6584;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-    }
-    
-    .bet-amount {
-        font-weight: 700;
-        color: #FF6584;
-    }
-    
-    .progress-bar-custom {
-        background-color: #6C63FF;
-    }
+        
+        .object-fit-cover {
+            object-fit: cover;
+        }
+        
+        .challenge-card {
+            transition: transform 0.3s ease;
+        }
+        
+        .challenge-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .challenge-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #FF6584;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .bet-amount {
+            font-weight: 700;
+            color: #FF6584;
+        }
+        
+        .progress-bar-custom {
+            background-color: #6C63FF;
+        }
         
         .feature-card {
             transition: transform 0.3s ease;
@@ -392,6 +393,71 @@
             background-color: gold;
             color: black;
         }
+
+        /* Animações de scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .slide-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .slide-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-2 {
+            transition-delay: 0.4s;
+        }
+
+        .delay-3 {
+            transition-delay: 0.6s;
+        }
+
+        .delay-4 {
+            transition-delay: 0.8s;
+        }
+
+        .delay-5 {
+            transition-delay: 1s;
+        }
         
         @media (max-width: 768px) {
             .hero-section {
@@ -408,6 +474,11 @@
             .section-title h2::after {
                 left: 50%;
                 transform: translateX(-50%);
+            }
+
+            /* Ajustes para mobile */
+            .fade-in, .slide-in-left, .slide-in-right, .scale-in {
+                transition-duration: 0.4s;
             }
         }
     </style>
@@ -451,13 +522,13 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 hero-content">
-                    <h1 class="display-4 fw-bold mb-4">Transforme seu corpo e ganhe dinheiro!</h1>
-                    <p class="lead mb-4">O PumPay combina desafios fitness, apostas saudáveis e uma comunidade vibrante para te motivar a sair do sedentarismo e alcançar seus objetivos.</p>
-                    <div class="hero-buttons d-flex flex-wrap">
+                    <h1 class="display-4 fw-bold mb-4 fade-in">Transforme seu corpo e ganhe dinheiro!</h1>
+                    <p class="lead mb-4 fade-in delay-1">O PumPay combina desafios fitness, apostas saudáveis e uma comunidade vibrante para te motivar a sair do sedentarismo e alcançar seus objetivos.</p>
+                    <div class="hero-buttons d-flex flex-wrap fade-in delay-2">
                         <a href="#download" class="btn btn-light btn-lg me-3 mb-3">Baixar App</a>
                         <a href="#how-it-works" class="btn btn-outline-light btn-lg mb-3">Como Funciona</a>
                     </div>
-                    <div class="d-flex align-items-center mt-4">
+                    <div class="d-flex align-items-center mt-4 fade-in delay-3">
                         <div class="me-4">
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-star text-warning me-2"></i>
@@ -475,7 +546,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block">
-                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App PumPay" class="img-fluid rounded-4 shadow">
+                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App PumPay" class="img-fluid rounded-4 shadow scale-in">
                 </div>
             </div>
         </div>
@@ -485,25 +556,25 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-3 col-6">
-                    <div class="stats-card">
+                    <div class="stats-card fade-in">
                         <div class="stats-number">500K+</div>
                         <div class="stats-label">Usuários Ativos</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
-                    <div class="stats-card">
+                    <div class="stats-card fade-in delay-1">
                         <div class="stats-number">1.2M</div>
                         <div class="stats-label">Desafios Criados</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
-                    <div class="stats-card">
+                    <div class="stats-card fade-in delay-2">
                         <div class="stats-number">R$5M+</div>
                         <div class="stats-label">Em Prêmios</div>
                     </div>
                 </div>
                 <div class="col-md-3 col-6">
-                    <div class="stats-card">
+                    <div class="stats-card fade-in delay-3">
                         <div class="stats-number">87%</div>
                         <div class="stats-label">Taxa de Sucesso</div>
                     </div>
@@ -515,13 +586,13 @@
     <section class="py-5" id="features">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title d-inline-block">Como o PumPay Funciona</h2>
-                <p class="lead">Transforme sua rotina de exercícios com motivação social e incentivos financeiros</p>
+                <h2 class="section-title d-inline-block fade-in">Como o PumPay Funciona</h2>
+                <p class="lead fade-in delay-1">Transforme sua rotina de exercícios com motivação social e incentivos financeiros</p>
             </div>
             
             <div class="row g-4 mb-5" id="how-it-works">
                 <div class="col-lg-4">
-                    <div class="feature-card card h-100 border-0 shadow-sm p-4">
+                    <div class="feature-card card h-100 border-0 shadow-sm p-4 fade-in">
                         <div class="feature-icon">
                             <i class="fas fa-trophy"></i>
                         </div>
@@ -530,7 +601,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="feature-card card h-100 border-0 shadow-sm p-4">
+                    <div class="feature-card card h-100 border-0 shadow-sm p-4 fade-in delay-1">
                         <div class="feature-icon">
                             <i class="fas fa-camera"></i>
                         </div>
@@ -539,7 +610,7 @@
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <div class="feature-card card h-100 border-0 shadow-sm p-4">
+                    <div class="feature-card card h-100 border-0 shadow-sm p-4 fade-in delay-2">
                         <div class="feature-icon">
                             <i class="fas fa-money-bill-wave"></i>
                         </div>
@@ -551,13 +622,13 @@
             
             <div class="row align-items-center mt-5">
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Interface" class="img-fluid rounded-4 shadow app-screenshot">
+                    <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Interface" class="img-fluid rounded-4 shadow app-screenshot slide-in-left">
                 </div>
                 <div class="col-lg-6">
-                    <h2 class="mb-4">Mais do que apenas apostas - uma comunidade fitness</h2>
-                    <p>O PumPay não é apenas sobre ganhar dinheiro, mas sobre construir hábitos saudáveis com uma comunidade que te apoia.</p>
+                    <h2 class="mb-4 fade-in">Mais do que apenas apostas - uma comunidade fitness</h2>
+                    <p class="fade-in delay-1">O PumPay não é apenas sobre ganhar dinheiro, mas sobre construir hábitos saudáveis com uma comunidade que te apoia.</p>
                     
-                    <div class="d-flex align-items-start my-4">
+                    <div class="d-flex align-items-start my-4 fade-in delay-2">
                         <div class="me-3">
                             <i class="fas fa-check-circle text-success fa-lg"></i>
                         </div>
@@ -567,7 +638,7 @@
                         </div>
                     </div>
                     
-                    <div class="d-flex align-items-start my-4">
+                    <div class="d-flex align-items-start my-4 fade-in delay-3">
                         <div class="me-3">
                             <i class="fas fa-check-circle text-success fa-lg"></i>
                         </div>
@@ -577,7 +648,7 @@
                         </div>
                     </div>
                     
-                    <div class="d-flex align-items-start my-4">
+                    <div class="d-flex align-items-start my-4 fade-in delay-4">
                         <div class="me-3">
                             <i class="fas fa-check-circle text-success fa-lg"></i>
                         </div>
@@ -592,108 +663,108 @@
     </section>
 
     <section class="py-5 bg-light" id="challenges">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-title d-inline-block">Desafios Populares</h2>
-            <p class="lead">Escolha um desafio que combine com seus objetivos e comece hoje mesmo</p>
-        </div>
-        
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-6 d-flex">
-                <div class="card challenge-card w-100 border-0">
-                    <div class="position-relative" style="height: 200px; overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
-                             class="card-img-top h-100 w-100 object-fit-cover" 
-                             alt="30 Day Abs Challenge">
-                        <div class="challenge-badge">Mais Popular</div>
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title d-inline-block fade-in">Desafios Populares</h2>
+                <p class="lead fade-in delay-1">Escolha um desafio que combine com seus objetivos e comece hoje mesmo</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6 d-flex">
+                    <div class="card challenge-card w-100 border-0 fade-in">
+                        <div class="position-relative" style="height: 200px; overflow: hidden;">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
+                                 class="card-img-top h-100 w-100 object-fit-cover" 
+                                 alt="30 Day Abs Challenge">
+                            <div class="challenge-badge">Mais Popular</div>
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Desafio Abdômen em 30 Dias</h5>
+                            <p class="card-text flex-grow-1">Fortaleça seu core com exercícios diários progressivos. Ideal para iniciantes e intermediários.</p>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-primary">Fitness</span>
+                                <span class="bet-amount">R$ 50-200</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="d-flex justify-content-between text-muted small mb-3">
+                                <span>75% completaram</span>
+                                <span>1.2k participantes</span>
+                            </div>
+                            <a href="#" class="btn btn-primary w-100">Participar</a>
+                        </div>
                     </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Desafio Abdômen em 30 Dias</h5>
-                        <p class="card-text flex-grow-1">Fortaleça seu core com exercícios diários progressivos. Ideal para iniciantes e intermediários.</p>
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="badge bg-primary">Fitness</span>
-                            <span class="bet-amount">R$ 50-200</span>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 d-flex">
+                    <div class="card challenge-card w-100 border-0 fade-in delay-1">
+                        <div class="position-relative" style="height: 200px; overflow: hidden;">
+                            <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
+                                 class="card-img-top h-100 w-100 object-fit-cover" 
+                                 alt="Weight Loss Challenge">
+                            <div class="challenge-badge">Novo</div>
                         </div>
-                        <div class="progress mb-3" style="height: 10px;">
-                            <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Desafio Perda de Peso em 8 Semanas</h5>
+                            <p class="card-text flex-grow-1">Programa completo com treinos e dicas nutricionais para emagrecer de forma saudável.</p>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-success">Emagrecimento</span>
+                                <span class="bet-amount">R$ 100-500</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 62%;" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="d-flex justify-content-between text-muted small mb-3">
+                                <span>62% completaram</span>
+                                <span>850 participantes</span>
+                            </div>
+                            <a href="#" class="btn btn-primary w-100">Participar</a>
                         </div>
-                        <div class="d-flex justify-content-between text-muted small mb-3">
-                            <span>75% completaram</span>
-                            <span>1.2k participantes</span>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 d-flex">
+                    <div class="card challenge-card w-100 border-0 fade-in delay-2">
+                        <div class="position-relative" style="height: 200px; overflow: hidden;">
+                            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
+                                 class="card-img-top h-100 w-100 object-fit-cover" 
+                                 alt="Running Challenge">
                         </div>
-                        <a href="#" class="btn btn-primary w-100">Participar</a>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">Desafio Corrida 5K em 6 Semanas</h5>
+                            <p class="card-text flex-grow-1">Programa de treinamento progressivo para correr 5km sem parar, mesmo começando do zero.</p>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-info">Cardio</span>
+                                <span class="bet-amount">R$ 30-150</span>
+                            </div>
+                            <div class="progress mb-3" style="height: 10px;">
+                                <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 81%;" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="d-flex justify-content-between text-muted small mb-3">
+                                <span>81% completaram</span>
+                                <span>2.3k participantes</span>
+                            </div>
+                            <a href="#" class="btn btn-primary w-100">Participar</a>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="col-lg-4 col-md-6 d-flex">
-                <div class="card challenge-card w-100 border-0">
-                    <div class="position-relative" style="height: 200px; overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
-                             class="card-img-top h-100 w-100 object-fit-cover" 
-                             alt="Weight Loss Challenge">
-                        <div class="challenge-badge">Novo</div>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Desafio Perda de Peso em 8 Semanas</h5>
-                        <p class="card-text flex-grow-1">Programa completo com treinos e dicas nutricionais para emagrecer de forma saudável.</p>
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="badge bg-success">Emagrecimento</span>
-                            <span class="bet-amount">R$ 100-500</span>
-                        </div>
-                        <div class="progress mb-3" style="height: 10px;">
-                            <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 62%;" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="d-flex justify-content-between text-muted small mb-3">
-                            <span>62% completaram</span>
-                            <span>850 participantes</span>
-                        </div>
-                        <a href="#" class="btn btn-primary w-100">Participar</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 col-md-6 d-flex">
-                <div class="card challenge-card w-100 border-0">
-                    <div class="position-relative" style="height: 200px; overflow: hidden;">
-                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" 
-                             class="card-img-top h-100 w-100 object-fit-cover" 
-                             alt="Running Challenge">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">Desafio Corrida 5K em 6 Semanas</h5>
-                        <p class="card-text flex-grow-1">Programa de treinamento progressivo para correr 5km sem parar, mesmo começando do zero.</p>
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="badge bg-info">Cardio</span>
-                            <span class="bet-amount">R$ 30-150</span>
-                        </div>
-                        <div class="progress mb-3" style="height: 10px;">
-                            <div class="progress-bar progress-bar-custom" role="progressbar" style="width: 81%;" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                        <div class="d-flex justify-content-between text-muted small mb-3">
-                            <span>81% completaram</span>
-                            <span>2.3k participantes</span>
-                        </div>
-                        <a href="#" class="btn btn-primary w-100">Participar</a>
-                    </div>
-                </div>
+            <div class="text-center mt-5 fade-in delay-3">
+                <a href="#" class="btn btn-outline-primary btn-lg">Ver Todos os Desafios</a>
             </div>
         </div>
-        
-        <div class="text-center mt-5">
-            <a href="#" class="btn btn-outline-primary btn-lg">Ver Todos os Desafios</a>
-        </div>
-    </div>
-</section>
+    </section>
 
     <section class="py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2 class="mb-4">Sistema de Apostas Justo e Motivador</h2>
-                    <p>Nosso sistema de apostas foi projetado para manter você motivado sem promover comportamentos prejudiciais.</p>
+                    <h2 class="mb-4 fade-in">Sistema de Apostas Justo e Motivador</h2>
+                    <p class="fade-in delay-1">Nosso sistema de apostas foi projetado para manter você motivado sem promover comportamentos prejudiciais.</p>
                     
-                    <div class="card bet-card mb-3 p-3">
+                    <div class="card bet-card mb-3 p-3 fade-in delay-2">
                         <div class="d-flex align-items-center">
                             <div class="me-3">
                                 <i class="fas fa-shield-alt fa-2x text-primary"></i>
@@ -705,7 +776,7 @@
                         </div>
                     </div>
                     
-                    <div class="card bet-card mb-3 p-3">
+                    <div class="card bet-card mb-3 p-3 fade-in delay-3">
                         <div class="d-flex align-items-center">
                             <div class="me-3">
                                 <i class="fas fa-percentage fa-2x text-primary"></i>
@@ -717,7 +788,7 @@
                         </div>
                     </div>
                     
-                    <div class="card bet-card p-3">
+                    <div class="card bet-card p-3 fade-in delay-4">
                         <div class="d-flex align-items-center">
                             <div class="me-3">
                                 <i class="fas fa-hand-holding-usd fa-2x text-primary"></i>
@@ -730,7 +801,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Betting System" class="img-fluid rounded-4 shadow app-screenshot">
+                    <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Betting System" class="img-fluid rounded-4 shadow app-screenshot slide-in-right">
                 </div>
             </div>
         </div>
@@ -739,13 +810,13 @@
     <section class="py-5 bg-light" id="community">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title d-inline-block">Comunidade PumPay</h2>
-                <p class="lead">Conecte-se com milhares de pessoas que estão transformando suas vidas</p>
+                <h2 class="section-title d-inline-block fade-in">Comunidade PumPay</h2>
+                <p class="lead fade-in delay-1">Conecte-se com milhares de pessoas que estão transformando suas vidas</p>
             </div>
             
             <div class="row g-4">
                 <div class="col-lg-8">
-                    <div class="social-feed">
+                    <div class="social-feed fade-in">
                         <h4 class="mb-4">Feed da Comunidade</h4>
                         
                         <div class="social-post">
@@ -794,7 +865,7 @@
                 </div>
                 
                 <div class="col-lg-4">
-                    <div class="card border-0 shadow-sm h-100">
+                    <div class="card border-0 shadow-sm h-100 fade-in delay-1">
                         <div class="card-body">
                             <h4 class="mb-4">Ranking Semanal</h4>
                             
@@ -863,13 +934,13 @@
     <section class="py-5" id="workouts">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title d-inline-block">Planos de Treino</h2>
-                <p class="lead">Treinos profissionais para todos os níveis e objetivos</p>
+                <h2 class="section-title d-inline-block fade-in">Planos de Treino</h2>
+                <p class="lead fade-in delay-1">Treinos profissionais para todos os níveis e objetivos</p>
             </div>
             
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <div class="card work-card h-100 border-0 shadow-sm p-4">
+                    <div class="card work-card h-100 border-0 shadow-sm p-4 fade-in">
                         <div class="feature-icon">
                             <i class="fas fa-fire-alt"></i>
                         </div>
@@ -885,7 +956,7 @@
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="card work-card h-100 border-0 shadow-sm p-4">
+                    <div class="card work-card h-100 border-0 shadow-sm p-4 fade-in delay-1">
                         <div class="feature-icon">
                             <i class="fas fa-dumbbell"></i>
                         </div>
@@ -901,7 +972,7 @@
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="card work-card h-100 border-0 shadow-sm p-4">
+                    <div class="card work-card h-100 border-0 shadow-sm p-4 fade-in delay-2">
                         <div class="feature-icon">
                             <i class="fas fa-heartbeat"></i>
                         </div>
@@ -919,7 +990,7 @@
             
             <div class="row mt-5">
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <div class="card border-0 shadow-sm h-100">
+                    <div class="card border-0 shadow-sm h-100 slide-in-left">
                         <div class="card-body p-4">
                             <h3 class="mb-4">Treino do Dia</h3>
                             <h5 class="text-primary">HIIT Queima Gordura (20 min)</h5>
@@ -970,7 +1041,7 @@
                 </div>
                 
                 <div class="col-lg-6">
-                    <div class="card border-0 shadow-sm h-100">
+                    <div class="card border-0 shadow-sm h-100 slide-in-right">
                         <div class="card-body p-4">
                             <h3 class="mb-4">Seu Progresso</h3>
                             <p>Registre seus treinos e acompanhe sua evolução ao longo do tempo.</p>
@@ -1027,13 +1098,13 @@
     <section class="py-5 bg-light" id="testimonials">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title d-inline-block">Histórias de Sucesso</h2>
-                <p class="lead">Veja o que nossos usuários estão falando sobre o PumPay</p>
+                <h2 class="section-title d-inline-block fade-in">Histórias de Sucesso</h2>
+                <p class="lead fade-in delay-1">Veja o que nossos usuários estão falando sobre o PumPay</p>
             </div>
             
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
-                    <div class="testimonial-card">
+                    <div class="testimonial-card fade-in">
                         <div class="d-flex align-items-center mb-4">
                             <img src="https://randomuser.me/api/portraits/women/45.jpg" class="testimonial-img me-3" alt="User">
                             <div>
@@ -1056,7 +1127,7 @@
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="testimonial-card">
+                    <div class="testimonial-card fade-in delay-1">
                         <div class="d-flex align-items-center mb-4">
                             <img src="https://randomuser.me/api/portraits/men/65.jpg" class="testimonial-img me-3" alt="User">
                             <div>
@@ -1079,7 +1150,7 @@
                 </div>
                 
                 <div class="col-lg-4 col-md-6">
-                    <div class="testimonial-card">
+                    <div class="testimonial-card fade-in delay-2">
                         <div class="d-flex align-items-center mb-4">
                             <img src="https://randomuser.me/api/portraits/women/68.jpg" class="testimonial-img me-3" alt="User">
                             <div>
@@ -1102,7 +1173,7 @@
                 </div>
             </div>
             
-            <div class="text-center mt-5">
+            <div class="text-center mt-5 fade-in delay-3">
                 <a href="#" class="btn btn-outline-primary btn-lg">Ver Mais Depoimentos</a>
             </div>
         </div>
@@ -1111,21 +1182,21 @@
     <section class="py-5">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title d-inline-block">Conheça o App</h2>
-                <p class="lead">Interface intuitiva e recursos poderosos na palma da sua mão</p>
+                <h2 class="section-title d-inline-block fade-in">Conheça o App</h2>
+                <p class="lead fade-in delay-1">Interface intuitiva e recursos poderosos na palma da sua mão</p>
             </div>
             
             <div class="row g-4 align-items-center">
                 <div class="col-lg-4 d-none d-lg-block">
-                    <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Screen 1" class="img-fluid rounded-4 shadow app-screenshot mb-4">
-                    <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Screen 3" class="img-fluid rounded-4 shadow app-screenshot">
+                    <img src="https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Screen 1" class="img-fluid rounded-4 shadow app-screenshot mb-4 scale-in">
+                    <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Screen 3" class="img-fluid rounded-4 shadow app-screenshot scale-in delay-1">
                 </div>
                 <div class="col-lg-4">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Screen 2" class="img-fluid rounded-4 shadow-lg app-screenshot">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Screen 2" class="img-fluid rounded-4 shadow-lg app-screenshot scale-in delay-2">
                 </div>
                 <div class="col-lg-4 d-none d-lg-block">
-                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Screen 4" class="img-fluid rounded-4 shadow app-screenshot mb-4">
-                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Screen 5" class="img-fluid rounded-4 shadow app-screenshot">
+                    <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Screen 4" class="img-fluid rounded-4 shadow app-screenshot mb-4 scale-in delay-3">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="App Screen 5" class="img-fluid rounded-4 shadow app-screenshot scale-in delay-4">
                 </div>
             </div>
         </div>
@@ -1135,10 +1206,10 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center cta-content">
-                    <h2 class="display-5 fw-bold mb-4">Pronto para Transformar seu Corpo e Ganhar Dinheiro?</h2>
-                    <p class="lead mb-5">Junte-se a mais de 500.000 pessoas que estão saindo do sedentarismo com diversão e recompensas financeiras.</p>
+                    <h2 class="display-5 fw-bold mb-4 fade-in">Pronto para Transformar seu Corpo e Ganhar Dinheiro?</h2>
+                    <p class="lead mb-5 fade-in delay-1">Junte-se a mais de 500.000 pessoas que estão saindo do sedentarismo com diversão e recompensas financeiras.</p>
                     
-                    <div class="d-flex flex-wrap justify-content-center">
+                    <div class="d-flex flex-wrap justify-content-center fade-in delay-2">
                         <a href="#" class="m-2">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/1200px-Download_on_the_App_Store_Badge.svg.png" alt="App Store" class="download-badge">
                         </a>
@@ -1147,7 +1218,7 @@
                         </a>
                     </div>
                     
-                    <div class="mt-5">
+                    <div class="mt-5 fade-in delay-3">
                         <h5 class="mb-3">Ou cadastre-se para receber o link por email:</h5>
                         <form class="row g-2 justify-content-center">
                             <div class="col-md-6 col-12">
@@ -1166,13 +1237,13 @@
     <section class="py-5 bg-light">
         <div class="container">
             <div class="text-center mb-5">
-                <h2 class="section-title d-inline-block">Perguntas Frequentes</h2>
-                <p class="lead">Tire suas dúvidas sobre o PumPay</p>
+                <h2 class="section-title d-inline-block fade-in">Perguntas Frequentes</h2>
+                <p class="lead fade-in delay-1">Tire suas dúvidas sobre o PumPay</p>
             </div>
             
             <div class="row justify-content-center">
                 <div class="col-lg-8">
-                    <div class="accordion" id="faqAccordion">
+                    <div class="accordion fade-in delay-2" id="faqAccordion">
                         <div class="accordion-item mb-3 border-0 shadow-sm">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -1258,9 +1329,9 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4">
-                    <h3 class="text-white mb-4">Pum<span>Pay</span></h3>
-                    <p>Tornando o fitness divertido e recompensador através de desafios sociais e competições amigáveis.</p>
-                    <div class="mt-4">
+                    <h3 class="text-white mb-4 fade-in">Pum<span>Pay</span></h3>
+                    <p class="fade-in delay-1">Tornando o fitness divertido e recompensador através de desafios sociais e competições amigáveis.</p>
+                    <div class="mt-4 fade-in delay-2">
                         <a href="#" class="social-icon me-2"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-icon me-2"><i class="fab fa-facebook-f"></i></a>
@@ -1269,51 +1340,51 @@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4">
-                    <h5 class="text-white mb-4">Links Rápidos</h5>
+                    <h5 class="text-white mb-4 fade-in">Links Rápidos</h5>
                     <ul class="list-unstyled footer-links">
-                        <li class="mb-2"><a href="#home">Home</a></li>
-                        <li class="mb-2"><a href="#features">Recursos</a></li>
-                        <li class="mb-2"><a href="#challenges">Desafios</a></li>
-                        <li class="mb-2"><a href="#community">Comunidade</a></li>
-                        <li class="mb-2"><a href="#workouts">Treinos</a></li>
+                        <li class="mb-2 fade-in delay-1"><a href="#home">Home</a></li>
+                        <li class="mb-2 fade-in delay-2"><a href="#features">Recursos</a></li>
+                        <li class="mb-2 fade-in delay-3"><a href="#challenges">Desafios</a></li>
+                        <li class="mb-2 fade-in delay-4"><a href="#community">Comunidade</a></li>
+                        <li class="mb-2 fade-in delay-5"><a href="#workouts">Treinos</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
-                    <h5 class="text-white mb-4">Empresa</h5>
+                    <h5 class="text-white mb-4 fade-in">Empresa</h5>
                     <ul class="list-unstyled footer-links">
-                        <li class="mb-2"><a href="#">Sobre Nós</a></li>
-                        <li class="mb-2"><a href="#">Carreiras</a></li>
-                        <li class="mb-2"><a href="#">Blog</a></li>
-                        <li class="mb-2"><a href="#">Imprensa</a></li>
-                        <li class="mb-2"><a href="#">Parcerias</a></li>
+                        <li class="mb-2 fade-in delay-1"><a href="#">Sobre Nós</a></li>
+                        <li class="mb-2 fade-in delay-2"><a href="#">Carreiras</a></li>
+                        <li class="mb-2 fade-in delay-3"><a href="#">Blog</a></li>
+                        <li class="mb-2 fade-in delay-4"><a href="#">Imprensa</a></li>
+                        <li class="mb-2 fade-in delay-5"><a href="#">Parcerias</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2 col-md-4">
-                    <h5 class="text-white mb-4">Suporte</h5>
+                    <h5 class="text-white mb-4 fade-in">Suporte</h5>
                     <ul class="list-unstyled footer-links">
-                        <li class="mb-2"><a href="#">FAQ</a></li>
-                        <li class="mb-2"><a href="#">Central de Ajuda</a></li>
-                        <li class="mb-2"><a href="#">Termos de Uso</a></li>
-                        <li class="mb-2"><a href="#">Política de Privacidade</a></li>
-                        <li class="mb-2"><a href="#">Contato</a></li>
+                        <li class="mb-2 fade-in delay-1"><a href="#">FAQ</a></li>
+                        <li class="mb-2 fade-in delay-2"><a href="#">Central de Ajuda</a></li>
+                        <li class="mb-2 fade-in delay-3"><a href="#">Termos de Uso</a></li>
+                        <li class="mb-2 fade-in delay-4"><a href="#">Política de Privacidade</a></li>
+                        <li class="mb-2 fade-in delay-5"><a href="#">Contato</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-2">
-                    <h5 class="text-white mb-4">Baixe o App</h5>
-                    <a href="#" class="d-block mb-3">
+                    <h5 class="text-white mb-4 fade-in">Baixe o App</h5>
+                    <a href="#" class="d-block mb-3 fade-in delay-1">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/1200px-Download_on_the_App_Store_Badge.svg.png" alt="App Store" class="img-fluid">
                     </a>
-                    <a href="#" class="d-block">
+                    <a href="#" class="d-block fade-in delay-2">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Google_Play_Store_badge_EN.svg/1200px-Google_Play_Store_badge_EN.svg.png" alt="Google Play" class="img-fluid">
                     </a>
                 </div>
             </div>
             <hr class="my-4 bg-secondary">
             <div class="row">
-                <div class="col-md-6 text-center text-md-start">
+                <div class="col-md-6 text-center text-md-start fade-in">
                     <p class="mb-0">&copy; 2025 PumPay. Todos os direitos reservados.</p>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
+                <div class="col-md-6 text-center text-md-end fade-in delay-1">
                     <p class="mb-0">Desenvolvido com <i class="fas fa-heart text-danger"></i> para transformar vidas</p>
                 </div>
             </div>
@@ -1322,7 +1393,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-       
+        // Navbar scroll effect
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
@@ -1332,7 +1403,7 @@
             }
         });
         
-      
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1346,7 +1417,7 @@
                         behavior: 'smooth'
                     });
                     
-                
+                    // Update URL
                     if (history.pushState) {
                         history.pushState(null, null, targetId);
                     } else {
@@ -1356,6 +1427,7 @@
             });
         });
         
+        // Highlight active nav item on scroll
         const sections = document.querySelectorAll('section');
         const navItems = document.querySelectorAll('.nav-link');
         
@@ -1379,6 +1451,26 @@
             });
         });
         
+        // Scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
         const loginForm = document.getElementById('loginForm');
         if (loginForm) {
             loginForm.addEventListener('submit', function(e) {
