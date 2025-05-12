@@ -1,2 +1,2 @@
-# Projeto-PumPay
-Projeto PumPay Oficial
+# Projeto-GymStakes
+Projeto GymStakes Oficial
